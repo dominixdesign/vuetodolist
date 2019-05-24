@@ -1,25 +1,53 @@
 <template>
   <section>
-    <h1>Simple ToDoList</h1>
+    <h1>
+      Simple ToDoList
+      <router-link title="zurück zur Liste" class="backlink" v-if="detailView" tag="a" :to="{ path: '/' }">
+        <IconBack />
+      </router-link>
+    </h1>
     <hr>
     <router-view/>
   </section>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import IconBack from './assets/IconBack'
 export default {
-  name: 'app'
+  name: 'app',
+	computed: {
+    detailView: function() {
+      return this.$route.name === 'todo'
+    }
+  },
+  components: {IconBack}
 }
 </script>
 
 <style>
+body {
+  background: #100e17;
+}
 section {
   margin: 2rem;
 }
 h1 {
   margin: 0;
+  position: relative;
+  color: #fff;
+}
+a.backlink {
+  position: absolute;
+  right: 0;
+}
+a.backlink svg {
+  width: 2rem;
+}
+a.backlink svg path {
+  fill: #fff;
+}
+a.backlink:hover svg path {
+  fill: #9217ba;
 }
 hr {
   border: none;

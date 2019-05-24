@@ -2,9 +2,10 @@
 	<div class="todolist">
 		<ul>
 			<Item
-      v-for="(todo, index) in todos"
-      :key="index"
+			v-for="(todo, index) in todos"
+			:key="index"
 			:title="todo.title"
+			:status="todo.status"
 			:id="index"
 			/>
 		</ul>
@@ -13,16 +14,16 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import Item from './Item.vue'
+import { mapState } from 'vuex'
+import Item from './Item'
 
 export default {
-  name: 'ToDoList',
-  props: {
-    msg: String
+	name: 'ToDoList',
+	props: {
+		msg: String
 	},
 	computed: mapState({
-    todos: state => state.todos
+		todos: state => state.todos
 	}),
 	components: {
 		Item
@@ -31,10 +32,8 @@ export default {
 </script>
 
 <style>
-@media (min-width: 700px) {
-	.todolist {
-		width: calc(700px - 4rem);
-	}
+.todolist {
+	width: 100%;
 }
 .todolist {
 	text-align: left;
