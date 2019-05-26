@@ -2,7 +2,7 @@
   <section>
     <h1>
       Simple ToDoList
-      <router-link title="zurück zur Liste" class="backlink" v-if="detailView" tag="a" :to="{ path: '/' }">
+      <router-link title="zurück zur Liste" class="backlink" v-if="showBacklink" tag="a" :to="{ path: '/' }">
         <IconBack />
       </router-link>
     </h1>
@@ -16,7 +16,7 @@ import IconBack from './assets/IconBack'
 export default {
   name: 'app',
 	computed: {
-    detailView: function() {
+    showBacklink: function() {
       return this.$route.name === 'todo'
     }
   },
